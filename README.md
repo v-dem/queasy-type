@@ -8,7 +8,7 @@
 
 ## Package `v-dem/queasy-type`
 
-Classes supporting typed "arrays" to help make passing parameters to methods and functions more strict. For example, `IntArray`, not just `array`.
+Classes supporting typed "arrays" to help keep code type-safe. For example, `IntArray`, not just `array`:
 
 ```php
 function giveMeInts(IntArray $ints)
