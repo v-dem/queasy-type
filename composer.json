@@ -1,0 +1,41 @@
+{
+    "name": "v-dem/queasy-type",
+    "description": "Type helper classes, part of QuEasy PHP framework",
+    "homepage": "https://github.com/v-dem/queasy-type/",
+    "keywords": ["array", "type", "collection", "typed array"],
+    "license": "LGPL-3.0-only",
+    "version": "1.0.0",
+    "minimum-stability": "dev",
+    "authors": [
+        {
+            "name": "Vitaly Demyanenko",
+            "email": "vitaly_demyanenko@yahoo.com"
+        }
+    ],
+    "config": {
+        "preferred-install": "dist"
+    },
+    "require": {
+        "php": ">=5.3.0|>=7.0.0"
+    },
+    "require-dev": {
+        "php": ">=7.1.0",
+        "phpunit/phpunit": "~7",
+        "ext-xdebug": "*"
+    },
+    "autoload":{
+        "psr-4":{
+            "queasy\\type\\": "src/"
+        }
+    },
+    "autoload-dev":{
+        "psr-4":{
+            "queasy\\type\\tests\\": "tests/src/"
+        }
+    },
+    "scripts": {
+        "test": [
+            "phpunit --coverage-clover coverage.xml"
+        ]
+    }
+}
