@@ -1,2 +1,2 @@
-# queasy-type
-QuEasy PHP Framework - Database
+# v-dem/queasy-type
+QuEasy PHP Framework - Types
