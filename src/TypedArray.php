@@ -69,15 +69,17 @@ class TypedArray implements \Iterator, \ArrayAccess, \Countable
     // ArrayAccess implementation
 
     public function offsetSet($offset, $item) {
-        if (is_null($offset)) {
+        if (null === $offset) {
             $this->append($item);
-        } else {
-            if (!$this->validateType($item)) {
-                throw new \InvalidArgumentException();
-            }
 
-            $this->items[$offset] = $item;
+            return;
         }
+
+        if (!$this->validateType($item)) {
+            throw new \InvalidArgumentException();
+        }
+
+        $this->items[$offset] = $item;
     }
 
     public function offsetExists($offset) {

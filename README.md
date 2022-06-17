@@ -1,4 +1,4 @@
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/0d4762b3b45e48c69d13687cd786e0ca)](https://app.codacy.com/manual/v-dem/queasy-db?utm_source=github.com&utm_medium=referral&utm_content=v-dem/queasy-db&utm_campaign=Badge_Grade_Dashboard)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/6303a8b527924a539a6c321985f494c3)](https://www.codacy.com/gh/v-dem/queasy-type/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=v-dem/queasy-type&amp;utm_campaign=Badge_Grade)
 [![Build Status](https://travis-ci.com/v-dem/queasy-type.svg?branch=master)](https://travis-ci.com/v-dem/queasy-type)
 [![codecov](https://codecov.io/gh/v-dem/queasy-type/branch/master/graph/badge.svg)](https://codecov.io/gh/v-dem/queasy-type)
 [![Total Downloads](https://poser.pugx.org/v-dem/queasy-type/downloads)](https://packagist.org/packages/v-dem/queasy-type)
@@ -19,14 +19,15 @@ function giveMeInts(IntArray $ints)
 
 ### Features
 
-* Classes allowing to use typed "arrays"
-    * `TypedArray` - Base class, implements `ArrayAccess`, `Iterator` and `Countable`
-    * `IntArray`
-    * `StringArray`
-    * `FloatArray`
-    * `ResourceArray`
-    * `ObjectArray`
-    * `ArrayArray`
+Classes allowing to use typed "arrays":
+
+*   `TypedArray` - Base class, implements `ArrayAccess`, `Iterator` and `Countable`
+*   `IntArray`
+*   `StringArray`
+*   `FloatArray`
+*   `ResourceArray`
+*   `ObjectArray`
+*   `ArrayArray`
 
 ### Requirements
 
