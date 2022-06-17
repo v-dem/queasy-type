@@ -128,10 +128,12 @@ class TypedArray implements \Iterator, \ArrayAccess, \Countable
             if ($this->classOrTypeName !== gettype($item)) {
                 return false;
             }
-        } else {
-            if ($this->classOrTypeName !== get_class($item)) {
-                return false;
-            }
+
+            return true;
+        }
+
+        if ($this->classOrTypeName !== get_class($item)) {
+            return false;
         }
 
         return true;
