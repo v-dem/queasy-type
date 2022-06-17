@@ -4,7 +4,7 @@ namespace queasy\type;
 
 class TypedArray implements \Iterator, \ArrayAccess, \Countable
 {
-    const SINGLE_TYPES = array('int', 'bool', 'float', 'string', 'array', 'object', 'resource');
+    const SINGLE_TYPES = array('int', 'integer', 'bool', 'boolean', 'float', 'double', 'string', 'array', 'object', 'resource');
 
     private $classOrTypeName;
 
@@ -22,6 +22,21 @@ class TypedArray implements \Iterator, \ArrayAccess, \Countable
      */
     public function __construct($classOrTypeName, array $items = null)
     {
+        // Workaround
+        switch ($classOrTypeName) {
+            case 'int':
+                $classOrTypeName = 'integer';
+                break;
+
+            case 'bool':
+                $classOrTypeName = 'boolean';
+                break;
+
+            case 'float':
+                $classOrTypeName = 'double';
+                break;
+        }
+
         $this->classOrTypeName = $classOrTypeName;
         $this->isSingleType = in_array($classOrTypeName, self::SINGLE_TYPES);
 
@@ -105,7 +120,12 @@ class TypedArray implements \Iterator, \ArrayAccess, \Countable
 
     public function __toString()
     {
-        return print_r($this->items, true);
+        $result = '';
+        foreach ($this->items as $key => $value) {
+            $result .= $key . ': ' . (string) $value . PHP_EOL;
+        }
+
+        return $result;
     }
 
     public function toArray()
