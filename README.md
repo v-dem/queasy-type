@@ -69,5 +69,3 @@ class UsersArray extends TypedArray
     }
 }
 ```
-
-Etc.
