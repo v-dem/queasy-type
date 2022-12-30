@@ -2,6 +2,8 @@
 
 namespace queasy\type;
 
+use InvalidArgumentException;
+
 class TypedArray implements \Iterator, \ArrayAccess, \Countable
 {
     const SINGLE_TYPES = array('int', 'integer', 'bool', 'boolean', 'float', 'double', 'string', 'array', 'object', 'resource');
@@ -90,9 +92,7 @@ class TypedArray implements \Iterator, \ArrayAccess, \Countable
             return;
         }
 
-        if (!$this->validateType($item)) {
-            throw new \InvalidArgumentException();
-        }
+        $this->validateType($item);
 
         $this->items[$offset] = $item;
     }
@@ -133,11 +133,9 @@ class TypedArray implements \Iterator, \ArrayAccess, \Countable
         return $this->items;
     }
 
-    protected function append($item)
+    public function append($item)
     {
-        if (!$this->validateType($item)) {
-            throw new \InvalidArgumentException();
-        }
+        $this->validateType($item);
 
         $this->items[] = $item;
     }
@@ -145,15 +143,20 @@ class TypedArray implements \Iterator, \ArrayAccess, \Countable
     protected function validateType($item)
     {
         if ($this->isSingleType) {
-            if ($this->classOrTypeName !== gettype($item)) {
-                return false;
+            $type = gettype($item);
+            if ($this->classOrTypeName !== $type) {
+                throw new \InvalidArgumentException(sprintf('Wrong argument type "%s". Argument of type "%s" expected.', $type, $this->classOrTypeName));
             }
 
             return true;
         }
 
-        if ($this->classOrTypeName !== get_class($item)) {
-            return false;
+        if (!is_object($item)) {
+            throw new \InvalidArgumentException(sprintf('Wrong argument. Object of class "%s" expected.', $this->classOrTypeName));
+        }
+
+        if ($item instanceof $this->classOrTypeName) {
+            throw new \InvalidArgumentException(sprintf('Wrong argument class "%s". Object of class "%s" expected.', get_class($class), $this->classOrTypeName));
         }
 
         return true;
