@@ -156,7 +156,7 @@ class TypedArray implements \Iterator, \ArrayAccess, \Countable
         }
 
         if ($item instanceof $this->classOrTypeName) {
-            throw new \InvalidArgumentException(sprintf('Wrong argument class "%s". Object of class "%s" expected.', get_class($class), $this->classOrTypeName));
+            throw new \InvalidArgumentException(sprintf('Wrong argument class "%s". Object of class "%s" expected.', get_class($item), $this->classOrTypeName));
         }
 
         return true;
